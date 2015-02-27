@@ -5,10 +5,6 @@
 FROM       quay.io/nuxeoio/nuxeo-base
 MAINTAINER Nuxeo <contact@nuxeo.com>
 
-# Copy scripts
-ADD nuxeo-install.sh /root/nuxeo-install.sh
-ADD start.sh /root/start.sh
-
 ### Build fleetctl until we use the REST API
 RUN apt-get install -y ca-certificates build-essential
 
@@ -27,8 +23,10 @@ RUN git clone https://github.com/coreos/fleet.git
 RUN cd fleet && git checkout v0.6.2 && ./build && cp ./bin/fleetctl /usr/bin && cd .. && rm -rf /tmp/fleet
 ### End of fleetctl build
 
-
+# Copy scripts
+ADD nuxeo-install.sh /root/nuxeo-install.sh
 # Download & Install Nuxeo
 RUN /bin/bash /root/nuxeo-install.sh
 
+ADD start.sh /root/start.sh
 CMD ["/root/start.sh"]

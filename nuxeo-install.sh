@@ -1,7 +1,8 @@
 #!/bin/sh -x
 
 # Nuxeo setup
-wget -q "http://www.nuxeo.org/static/latest-release/nuxeo,tomcat.zip,6.0" -O /tmp/nuxeo-distribution-tomcat.zip
+#wget -q "http://www.nuxeo.org/static/latest-release/nuxeo,tomcat.zip,6.0" -O /tmp/nuxeo-distribution-tomcat.zip
+wget -q "http://maven-eu.nuxeo.org/nexus/service/local/artifact/maven/redirect?r=public-releases&g=org.nuxeo.ecm.distribution&a=nuxeo-distribution-tomcat&v=6.0-HF07&e=zip&c=nuxeo-cap" -O /tmp/nuxeo-distribution-tomcat.zip
 MARKETPLACE_OUTPUT=/tmp/marketplace-nuxeo-io-manager.zip
 wget -q "http://www.nuxeo.org/static/latest-io-release/marketplace,nuxeo,io,manager,zip,0.5" -O $MARKETPLACE_OUTPUT
 
