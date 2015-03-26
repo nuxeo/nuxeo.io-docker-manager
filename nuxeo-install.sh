@@ -1,10 +1,9 @@
 #!/bin/sh -x
 
 # Nuxeo setup
-#wget -q "http://www.nuxeo.org/static/latest-release/nuxeo,tomcat.zip,6.0" -O /tmp/nuxeo-distribution-tomcat.zip
-wget -q "http://maven-eu.nuxeo.org/nexus/service/local/artifact/maven/redirect?r=public-releases&g=org.nuxeo.ecm.distribution&a=nuxeo-distribution-tomcat&v=6.0-HF07&e=zip&c=nuxeo-cap" -O /tmp/nuxeo-distribution-tomcat.zip
+wget -q "http://www.nuxeo.org/static/latest-release/nuxeo,tomcat.zip,7.2" -O /tmp/nuxeo-distribution-tomcat.zip
 MARKETPLACE_OUTPUT=/tmp/marketplace-nuxeo-io-manager.zip
-wget -q "http://www.nuxeo.org/static/latest-io-release/marketplace,nuxeo,io,manager,zip,0.5" -O $MARKETPLACE_OUTPUT
+wget -q "http://www.nuxeo.org/static/latest-io-release/marketplace,nuxeo,io,manager,zip,0.6" -O $MARKETPLACE_OUTPUT
 
 mkdir -p /tmp/nuxeo-distribution
 unzip -q -d /tmp/nuxeo-distribution /tmp/nuxeo-distribution-tomcat.zip
@@ -29,6 +28,14 @@ nuxeo.pid.dir=/var/run/nuxeo
 nuxeo.data.dir=/var/lib/nuxeo/data
 nuxeo.wizard.done=true
 EOF
+
+# Install java 8
+# Install java
+apt-get remove -y --purge openjdk-7-jdk
+add-apt-repository -y ppa:webupd8team/java && apt-get update
+echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+apt-get install -y oracle-java8-installer
 
 # Install nuxeo.io MP
 echo 'mp-init'
