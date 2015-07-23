@@ -3,6 +3,7 @@
 # Nuxeo setup
 wget -q "http://www.nuxeo.org/static/latest-release/nuxeo,tomcat.zip,7.2" -O /tmp/nuxeo-distribution-tomcat.zip
 MARKETPLACE_OUTPUT=/tmp/marketplace-nuxeo-io-manager.zip
+# Force cache disablement ...
 wget -q "http://community.nuxeo.com/static/latest-io-snapshot/marketplace,nuxeo,io,manager,zip,0.7.1" -O $MARKETPLACE_OUTPUT
 
 mkdir -p /tmp/nuxeo-distribution
