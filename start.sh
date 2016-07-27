@@ -59,9 +59,6 @@ if [ ! -z "$CONNECT_URL" ]; then
   echo "org.nuxeo.connect.url=$CONNECT_URL" >> $NUXEO_CONF
 fi
 
-
-echo "JAVA_OPTS=\$JAVA_OPTS -Djvmcheck=nofail" >> $NUXEO_CONF
-
 # Start nuxeo
-su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
+su $NUXEO_USER -m -c "LAUNCHER_DEBUG=\"-Djvmcheck=nofail\" $NUXEOCTL --quiet start"
 su $NUXEO_USER -m -c "tail -f /var/log/nuxeo/server.log"
