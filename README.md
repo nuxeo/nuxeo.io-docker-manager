@@ -1,7 +1,7 @@
 Nuxeo.io docker image for : awscli
 =====================================
 
-This repository holds the Dockerfile for `awscli` which is in use in [http://github.com/nuxeo/nuxeo.io](nuxeo.io)
+This repository holds the Dockerfile for `nuxeo.io-manager` which is in use in [http://github.com/nuxeo/nuxeo.io](nuxeo.io)
 
 
 
