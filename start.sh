@@ -60,5 +60,5 @@ if [ ! -z "$CONNECT_URL" ]; then
 fi
 
 # Start nuxeo
-su $NUXEO_USER -m -c "LAUNCHER_DEBUG=\"-Djvmcheck=nofail\" && $NUXEOCTL --quiet start"
+su $NUXEO_USER -m -c "LAUNCHER_DEBUG=\"-Djvmcheck=nofail\" $NUXEOCTL --quiet start"
 su $NUXEO_USER -m -c "tail -f /var/log/nuxeo/server.log"
